@@ -1,0 +1,16 @@
+{
+  "manifest_version": 3,
+  "name": "米国株版銘柄チェッカー",
+  "version": "0.1",
+  "description": "右クリックで銘柄をマーキング",
+
+  "permissions": [
+    "contextMenus",
+    "scripting",
+    "activeTab"
+  ],
+
+  "background": {
+    "service_worker": "background.js"
+  }
+}
