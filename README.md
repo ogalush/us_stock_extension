@@ -11,8 +11,9 @@ https://github.com/ogalush/us_stock_extension/archive/refs/heads/main.zip
 Chrome 拡張のインストール方法:
 1. chrome://extensions/ を開く
 2. 画面右上のデベロッパーモードを有効化
-3. 「パッケージ化されていない拡張機能を読み込む」
+3. 「パッケージ化されていない拡張機能を読み込む」を開く。
 4. ダウンロードした「us_stock_extension」フォルダを選択する。
+5. 拡張機能ウィンドウに「米国株版銘柄チェッカー0.1」が表示されればOK.
 ```
 3. PeakFinderで銘柄を取得する  
 4. 「右クリック」→ 「米国銘柄をマーキングする」を押す。  
