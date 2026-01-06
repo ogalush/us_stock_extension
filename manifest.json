@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "米国株版銘柄チェッカー",
   "version": "0.1",
-  "description": "右クリックで銘柄をマーキング",
+  "description": "Cleartradeで利用する銘柄チェッカー。米国株用です。",
 
   "permissions": [
     "contextMenus",
