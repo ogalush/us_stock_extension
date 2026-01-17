@@ -33,5 +33,40 @@ Chrome 拡張のインストール方法:
   
 8. TradingViewのiframeのウィンドウの大きさを閉じる場合  
 → ウィンドウ右上の×を押す
+  
+# その他
+## ChromeStoreの更新方法
+### ローカルで開発する。
+vscodeで編集、その後、Chomeブラウザで表示確認。
+
+### パッケージング
+提出用のzipファイルを用意する。  
+ `manifest.json` が直下にあること。
+```
+% cd us_stock_extension_main
+zip -vr ../us_stock_extension_main.zip . \
+  -x "README.md" \
+  -x ".git/*" \
+  -x ".DS_Store"
+```
+### 審査へ提出
+* [Chrome Web Store Developer Dashboard](https://chrome.google.com/webstore/devconsole) へログイン
+```
+•	Google アカウントでログイン
+•	既存の拡張機能が一覧に表示される
+```
+* 「アイテムを更新」する
+```
+1.	対象の拡張をクリック
+2.	［パッケージ］ or ［Store listing］画面へ
+3.	「新しいパッケージをアップロード」
+4.	v0.2 の ZIP をアップロード
+```
+* 審査用の変更内容を書く
+変更内容を簡潔に記載する。
+* プライバシー関連
+個人情報は収集していないので、その旨記載。
+* 審査に提出
+「審査に送信」ボタンを押す。
 
 以上
