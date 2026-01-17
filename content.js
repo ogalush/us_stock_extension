@@ -69,6 +69,7 @@ function createPreviewBox() {
 
   enableDrag(previewBox);
   enableResize(previewBox);
+  restorePreviewState(previewBox); // Position
 }
 
 
@@ -100,6 +101,7 @@ function enableDrag(box) {
   function stop() {
     document.removeEventListener("mousemove", move);
     document.removeEventListener("mouseup", stop);
+    savePreviewState(box); // Keep Position
   }
 }
 
@@ -131,6 +133,7 @@ function enableResize(box) {
   function stop() {
     document.removeEventListener("mousemove", resize);
     document.removeEventListener("mouseup", stop);
+    savePreviewState(box); // Keep Position
   }
 }
 
@@ -138,10 +141,14 @@ function enableResize(box) {
 /**************
  * Show TradingView iframe
  **************/
+let currentTicker = null;
 function showPreview(ticker) {
   createPreviewBox();
+  if (currentTicker === ticker) return;
+
+  currentTicker = ticker;
   previewIframe.src =
-    `https://s.tradingview.com/widgetembed/?symbol=${ticker}&interval=D&hidesidetoolbar=1&hidetoptoolbar=1&theme=light&locale=ja`;
+    `https://s.tradingview.com/widgetembed/?symbol=${ticker}&interval=D&hidesidetoolbar=1&hidetoptoolbar=1&theme=${getTheme()}&locale=ja`;
 }
 
 /**************
@@ -166,10 +173,12 @@ document.addEventListener("mouseenter", (e) => {
   const el = getClosestStockMarker(e.target);
   if (!el) return;
 
+  createPreviewBox(); // 先に生成
   hoverTimer = setTimeout(() => {
     showPreview(el.dataset.ticker);
   }, 300);
 }, true);
+
 
 /**************
  * iframe は「選択中は非表示」にする（超重要）
@@ -180,6 +189,43 @@ document.addEventListener("mouseleave", (e) => {
 
   clearTimeout(hoverTimer);
 }, true);
+
+
+/**************
+ * Keep Position for Preview UI (iframe)
+ **************/
+function savePreviewState(box) {
+  const rect = box.getBoundingClientRect();
+  chrome.storage.local.set({
+    previewState: {
+      left: rect.left,
+      top: rect.top,
+      width: rect.width,
+      height: rect.height
+    }
+  });
+}
+function restorePreviewState(box) {
+  chrome.storage.local.get("previewState", (res) => {
+    if (!res.previewState) return;
+    const s = res.previewState;
+    box.style.left = s.left + "px";
+    box.style.top = s.top + "px";
+    box.style.width = s.width + "px";
+    box.style.height = s.height + "px";
+  });
+}
+
+/**************
+ * DarkMode対応
+ **************/
+function isDarkMode() {
+  return window.matchMedia("(prefers-color-scheme: dark)").matches;
+}
+
+function getTheme() {
+  return isDarkMode() ? "dark" : "light";
+}
 
 
 document.addEventListener("selectionchange", () => {
@@ -249,6 +295,19 @@ style.textContent = `
   cursor: text;
 }
 `;
+
+// DarkMode対応
+const dark = isDarkMode();
+style.textContent += dark ? `
+#stock-preview {
+  background: #1e1e1e;
+  border-color: #444;
+  color: #ddd;
+}
+#stock-preview .header {
+  background: #2b2b2b;
+}
+` : "";
 document.head.appendChild(style);
 
 
@@ -268,3 +327,9 @@ if (document.readyState === "loading") {
   initMarking();
 }
 
+// DarkMode対応
+window.matchMedia("(prefers-color-scheme: dark)")
+  .addEventListener("change", () => {
+    if (previewBox) previewBox.remove();
+    previewBox = null;
+  });
