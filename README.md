@@ -69,4 +69,19 @@ zip -vr ../us_stock_extension_main.zip . \
 * 審査に提出
 「審査に送信」ボタンを押す。
 
+### バージョンタグ付け
+公開されたら、codefreezeさせるため、バージョンタグを付与する。
+```
+$ git clone git@github.com:ogalush/us_stock_extension.git
+$ VER='v0.2'
+$ git tag -a ${VER:?} -m "Release ${VER:?}
+- Persist preview window position and size
+- Improve iframe loading performance
+- Add dark mode support"
+$ git push origin ${VER:?}
+```
+修正をして改めてtag打ちしたい場合は、remote tagを削除して再度tag付与することで対応可能。
+```
+$ git push origin --delete ${VER:?}
+```
 以上
