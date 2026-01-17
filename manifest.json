@@ -1,13 +1,14 @@
 {
   "manifest_version": 3,
   "name": "米国株版銘柄チェッカー",
-  "version": "0.1",
+  "version": "0.2",
   "description": "Cleartradeで利用する銘柄チェッカー。米国株用です。",
 
   "permissions": [
     "contextMenus",
     "scripting",
-    "activeTab"
+    "activeTab",
+    "storage"
   ],
 
   "background": {
