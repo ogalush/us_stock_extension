@@ -9,8 +9,8 @@
  *  - Draggable & resizable preview window
  *
  * Author: Takehiko OGASAWARA
- * Version: 0.1
- * Last Updated: 2026-01-06
+ * Version: 0.3.0
+ * Last Updated: 2026-03-23
  */
 
 chrome.runtime.onInstalled.addListener(() => {
@@ -25,7 +25,7 @@ chrome.contextMenus.onClicked.addListener((info, tab) => {
   if (info.menuItemId === "mark-stocks") {
     chrome.scripting.executeScript({
       target: { tabId: tab.id },
-      files: ["content.js"]
+      files: ["siteConfigs.js", "content.js"]
     });
   }
 });

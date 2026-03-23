@@ -1,9 +1,21 @@
 {
   "manifest_version": 3,
   "name": "米国株版銘柄チェッカー",
-  "version": "0.2",
+  "version": "0.3.0",
   "description": "Cleartradeで利用する銘柄チェッカー。米国株用です。",
-
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "action": {
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png",
+      "48": "icons/icon48.png"
+    }
+  },
   "permissions": [
     "contextMenus",
     "scripting",
