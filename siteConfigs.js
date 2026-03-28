@@ -1,4 +1,11 @@
-window.US_STOCK_MARKER = window.US_STOCK_MARKER || {};
+window.US_STOCK_MARKER = window.US_STOCK_MARKER || {
+  contentState: {
+    currentTicker: null,
+    hoverTimer: null,
+    previewBox: null,
+    previewIframe: null
+  }
+};
 window.US_STOCK_MARKER.SITE_CONFIGS = [
   {
     name: "PeakFinder",
