@@ -1,7 +1,15 @@
 # us_stock_extension
 US Stock Checker for PeakFinder  
 
-[米国株版銘柄チェッカー](https://chromewebstore.google.com/detail/%E7%B1%B3%E5%9B%BD%E6%A0%AA%E7%89%88%E9%8A%98%E6%9F%84%E3%83%81%E3%82%A7%E3%83%83%E3%82%AB%E3%83%BC/ldablobohcpnjbnljaopaojjmfoeaegf)
+[米国株版銘柄チェッカー](https://chromewebstore.google.com/detail/%E7%B1%B3%E5%9B%BD%E6%A0%AA%E7%89%88%E9%8A%98%E6%9F%84%E3%83%81%E3%82%A7%E3%83%83%E3%82%AB%E3%83%BC/ldablobohcpnjbnljaopaojjmfoeaegf)  
+  
+2026.8.31記載  
+【お知らせ・移行のご案内】  
+本拡張機能は「日本株/米国株 銘柄チェッカー」へアップデート移行いたしました。  
+今後は以下の最新版をご利用くださいますようお願いいたします。  
+  
+▼ 最新版（日本株対応）のインストールはこちら  
+[日本株/米国株 銘柄チェッカー](https://chromewebstore.google.com/detail/jajcbbhfdckikdhpgfjdaedndiolelkp?utm_source=item-share-cb)  
 
 # 使い方
 1. 拡張機能をダウンロードする  
